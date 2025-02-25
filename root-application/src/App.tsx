@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useRef } from "react";
 
 import ReactChild from "ReactChild/App";
 
@@ -10,6 +10,8 @@ const ReactChildAppComponent = lazy<typeof ReactChild>(async () => {
   }
 });
 
+import("AngularChild/Component");
+
 export default function App() {
   return (
     <div>
@@ -17,6 +19,9 @@ export default function App() {
       <Suspense fallback={<div>Loading module...</div>}>
         <ReactChildAppComponent></ReactChildAppComponent>
       </Suspense>
+      {/* <Suspense fallback={<>test</>}> */}
+      <angular-mfe></angular-mfe>
+      {/* </Suspense> */}
     </div>
   );
 }
