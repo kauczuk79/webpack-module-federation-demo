@@ -1,5 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { ModuleFederationPlugin } = require("webpack").container;
+const { FederatedTypesPlugin } = require("@module-federation/typescript");
+const moduleFederationConfig = require("./module-federation-config.json");
 
 module.exports = {
   mode: "development",
@@ -29,6 +32,13 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
+    }),
+    new ModuleFederationPlugin(moduleFederationConfig),
+    new FederatedTypesPlugin({
+      federationConfig: moduleFederationConfig,
+      typeFetchOptions: {
+        maxRetryAttempts: 1,
+      },
     }),
   ],
 };

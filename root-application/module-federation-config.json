@@ -1,0 +1,11 @@
+{
+  "name": "RootApplication",
+  "filename": "RootApplicationMoudle.js",
+  "remotes": {
+    "ReactChild": "http://localhost:3001/ReactChildModule.js"
+  },
+  "shared": {
+    "react": { "singleton": true },
+    "react-dom": { "singleton": true }
+  }
+}
