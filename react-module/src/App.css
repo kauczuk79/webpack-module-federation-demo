@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+.module-container {
+  font-family: "Lato", serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 2em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}

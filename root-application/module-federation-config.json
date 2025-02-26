@@ -3,7 +3,7 @@
   "filename": "RootApplicationMoudle.js",
   "remotes": {
     "ReactChild": "ReactChild@http://localhost:3001/ReactChildModule.js",
-    "AngularChild": "AngularChild@http://localhost:4200/remoteEntry.js"
+    "AngularChild": "AngularChild@http://localhost:4200/AngularChildModule.js"
   },
   "shared": {
     "react": { "singleton": true },

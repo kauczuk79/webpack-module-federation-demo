@@ -5,6 +5,7 @@ const {
 
 const webpackConfig = withModuleFederationPlugin({
   name: "angular-module",
+  filename: "AngularChildModule.js",
 
   library: {
     type: "var",
