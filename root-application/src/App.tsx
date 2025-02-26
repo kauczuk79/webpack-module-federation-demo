@@ -1,6 +1,5 @@
 import React, { lazy, Suspense } from "react";
 import ReactChild from "ReactChild/App";
-// import("AngularChild/Component");
 import "./App.css";
 import Spinner from "./components/spinner";
 import Error from "./components/error";
