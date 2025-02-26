@@ -11,7 +11,7 @@ export default function ReactIcon() {
       style={{ color: "rgb(8, 126, 164)" }}
     >
       <circle cx="0" cy="0" r="2" fill="currentColor"></circle>
-      <g stroke="currentColor" stroke-width="1" fill="none">
+      <g stroke="currentColor" strokeWidth="1" fill="none">
         <ellipse rx="10" ry="4.5"></ellipse>
         <ellipse rx="10" ry="4.5" transform="rotate(60)"></ellipse>
         <ellipse rx="10" ry="4.5" transform="rotate(120)"></ellipse>
