@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useRef } from "react";
 import ReactChild from "ReactChild/App";
 import "./App.css";
 import Spinner from "./components/spinner";
@@ -8,6 +8,37 @@ const ReactChildAppComponent = lazy<typeof ReactChild>(async () => {
   try {
     return await import("ReactChild/App");
   } catch {
+    return {
+      default: (): React.JSX.Element => (
+        <div className="center">
+          <Error />
+        </div>
+      ),
+    };
+  }
+});
+
+const VueChildAppComponent = lazy<typeof ReactChild>(async () => {
+  try {
+    const { mount } = await import("VueChild/rightSidebar");
+
+    const Component = () => {
+      const elementRef = useRef(null);
+      useEffect(() => {
+        const el = document.createElement("div");
+        mount(el);
+        if (elementRef.current) {
+          elementRef.current.innerHTML = el.innerHTML;
+        }
+      });
+      return <div ref={elementRef} />;
+    };
+
+    return {
+      default: Component,
+    };
+  } catch (e) {
+    console.log(e);
     return {
       default: (): React.JSX.Element => (
         <div className="center">
@@ -64,6 +95,17 @@ export default function App() {
             }
           >
             <AngularChildAppComponent />
+          </Suspense>
+        </a>
+        <a href="http://localhost:3003" target="_blank" className="tile">
+          <Suspense
+            fallback={
+              <div className="center">
+                <Spinner />
+              </div>
+            }
+          >
+            <VueChildAppComponent></VueChildAppComponent>
           </Suspense>
         </a>
       </div>
