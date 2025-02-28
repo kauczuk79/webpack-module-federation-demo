@@ -1,13 +1,13 @@
 import React from "react";
+import "./error.css";
 
-export default function Error() {
+export function Error() {
   return (
     <svg
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      width={200}
-      height={100}
+      className="error"
     >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g

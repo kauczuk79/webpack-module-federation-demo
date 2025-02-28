@@ -1,73 +1,43 @@
-import React, { lazy, Suspense, useEffect, useRef } from "react";
+import React, { lazy, Suspense, useEffect, useRef, ErrorInfo } from "react";
 import ReactChild from "ReactChild/App";
 import "./App.css";
 import Spinner from "./components/spinner";
-import Error from "./components/error";
+import { Error } from "./components/error";
+import ErrorBoundary from "./components/error-boundary";
 
 const ReactChildAppComponent = lazy<typeof ReactChild>(async () => {
-  try {
-    return await import("ReactChild/App");
-  } catch {
-    return {
-      default: (): React.JSX.Element => (
-        <div className="center">
-          <Error />
-        </div>
-      ),
-    };
-  }
+  return await import("ReactChild/App");
 });
 
 const VueChildAppComponent = lazy<typeof ReactChild>(async () => {
-  try {
-    const { mount } = await import("VueChild/rightSidebar");
+  const { mount } = await import("VueChild/App");
 
-    const Component = () => {
-      const elementRef = useRef(null);
-      useEffect(() => {
-        const el = document.createElement("div");
-        mount(el);
-        if (elementRef.current) {
-          elementRef.current.innerHTML = el.innerHTML;
-        }
-      });
-      return <div ref={elementRef} />;
-    };
+  const Component = () => {
+    const elementRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+      const el = document.createElement("div");
+      mount(el);
+      if (elementRef.current) {
+        elementRef.current.innerHTML = el.innerHTML;
+      }
+    });
+    return <div ref={elementRef} />;
+  };
 
-    return {
-      default: Component,
-    };
-  } catch (e) {
-    console.log(e);
-    return {
-      default: (): React.JSX.Element => (
-        <div className="center">
-          <Error />
-        </div>
-      ),
-    };
-  }
+  return {
+    default: Component,
+  };
 });
 
 const AngularChildAppComponent = lazy<() => React.JSX.Element>(async () => {
-  try {
-    await import("AngularChild/Component");
-    return {
-      default: () => (
-        <div>
-          <angular-mfe></angular-mfe>
-        </div>
-      ),
-    };
-  } catch {
-    return {
-      default: (): React.JSX.Element => (
-        <div className="center">
-          <Error />
-        </div>
-      ),
-    };
-  }
+  await import("AngularChild/Component");
+  return {
+    default: () => (
+      <>
+        <angular-mfe></angular-mfe>
+      </>
+    ),
+  };
 });
 
 export default function App() {
@@ -76,37 +46,25 @@ export default function App() {
       <div className="header">Root application [React 19]</div>
       <div className="tile-container">
         <a href="http://localhost:3001" target="_blank" className="tile">
-          <Suspense
-            fallback={
-              <div className="center">
-                <Spinner />
-              </div>
-            }
-          >
-            <ReactChildAppComponent></ReactChildAppComponent>
-          </Suspense>
+          <ErrorBoundary fallback={<Error />}>
+            <Suspense fallback={<Spinner />}>
+              <ReactChildAppComponent></ReactChildAppComponent>
+            </Suspense>
+          </ErrorBoundary>
         </a>
         <a href="http://localhost:4200" target="_blank" className="tile">
-          <Suspense
-            fallback={
-              <div className="center">
-                <Spinner />
-              </div>
-            }
-          >
-            <AngularChildAppComponent />
-          </Suspense>
+          <ErrorBoundary fallback={<Error />}>
+            <Suspense fallback={<Spinner />}>
+              <AngularChildAppComponent />
+            </Suspense>
+          </ErrorBoundary>
         </a>
         <a href="http://localhost:3003" target="_blank" className="tile">
-          <Suspense
-            fallback={
-              <div className="center">
-                <Spinner />
-              </div>
-            }
-          >
-            <VueChildAppComponent></VueChildAppComponent>
-          </Suspense>
+          <ErrorBoundary fallback={<Error />}>
+            <Suspense fallback={<Spinner />}>
+              <VueChildAppComponent></VueChildAppComponent>
+            </Suspense>
+          </ErrorBoundary>
         </a>
       </div>
     </div>
