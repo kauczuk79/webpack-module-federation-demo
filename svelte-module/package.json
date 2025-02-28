@@ -1,5 +1,5 @@
 {
-  "name": "svelte-app",
+  "name": "svelte-module",
   "version": "1.0.0",
   "dependencies": {
     "svelte": "^4.0.0"

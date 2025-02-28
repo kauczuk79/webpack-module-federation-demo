@@ -78,7 +78,7 @@ export default function App() {
             </Suspense>
           </ErrorBoundary>
         </a>
-        <a href="http://localhost:4200" target="_blank" className="tile">
+        <a href="http://localhost:3002" target="_blank" className="tile">
           <ErrorBoundary fallback={<Error />}>
             <Suspense fallback={<Spinner />}>
               <AngularChildAppComponent />
@@ -92,7 +92,7 @@ export default function App() {
             </Suspense>
           </ErrorBoundary>
         </a>
-        <a href="http://localhost:8080" target="_blank" className="tile">
+        <a href="http://localhost:3004" target="_blank" className="tile">
           <ErrorBoundary fallback={<Error />}>
             <Suspense fallback={<Spinner />}>
               <SvelteChildAppComponent></SvelteChildAppComponent>
