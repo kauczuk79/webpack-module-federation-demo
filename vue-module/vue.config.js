@@ -13,7 +13,7 @@ module.exports = defineConfig({
         name: "VueChild",
         filename: "VueChildModule.js",
         exposes: {
-          "./App": "./src/main.js",
+          "./App": "./src/main.ts",
         },
         shared: {
           vue: {

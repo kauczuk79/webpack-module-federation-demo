@@ -1,29 +1,35 @@
 <template>
-  <div class="right-sidebar">
-    Right sidebar Application in
-    <img src="./assets/logo.png" class="vue-logo">
+  <div class="app">
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld :msg="'Hello ' + who + '!'" />
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Options, Vue } from 'vue-class-component';
+import HelloWorld from './components/HelloWorld.vue';
 
-export default {
-  name: 'App',
-}
+@Options({
+  components: {
+    HelloWorld,
+  },
+  props: {
+    who: {
+      default: "world",
+      type: String
+    }
+  }
+})
+export default class App extends Vue {}
 </script>
 
 <style>
-.right-sidebar{
-  background-color: #03efb942;
-  font-size: 18px;
-  font-weight: bold;
+.app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  height:100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.vue-logo{
-  height:100px;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>

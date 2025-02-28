@@ -12,11 +12,13 @@ const ReactChildAppComponent = lazy<typeof ReactChild>(async () => {
 const VueChildAppComponent = lazy<typeof ReactChild>(async () => {
   const { mount } = await import("VueChild/App");
 
-  const Component = () => {
+  const Component = ({}) => {
     const elementRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
       const el = document.createElement("div");
-      mount(el);
+      mount(el, {
+        who: "root",
+      });
       if (elementRef.current) {
         elementRef.current.innerHTML = el.innerHTML;
       }
