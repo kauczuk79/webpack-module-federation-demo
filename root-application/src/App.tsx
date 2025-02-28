@@ -40,6 +40,32 @@ const AngularChildAppComponent = lazy<() => React.JSX.Element>(async () => {
   };
 });
 
+const SvelteChildAppComponent = lazy(async () => {
+  const module = await import("SvelteChild/App");
+  console.log(module);
+
+  const Component = () => {
+    const elementRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+      const el = document.createElement("div");
+      new module.default({
+        target: el,
+        props: {
+          name: "Root",
+        },
+      });
+      if (elementRef.current) {
+        elementRef.current.innerHTML = el.innerHTML;
+      }
+    });
+    return <div ref={elementRef} />;
+  };
+
+  return {
+    default: Component,
+  };
+});
+
 export default function App() {
   return (
     <div>
@@ -63,6 +89,13 @@ export default function App() {
           <ErrorBoundary fallback={<Error />}>
             <Suspense fallback={<Spinner />}>
               <VueChildAppComponent></VueChildAppComponent>
+            </Suspense>
+          </ErrorBoundary>
+        </a>
+        <a href="http://localhost:8080" target="_blank" className="tile">
+          <ErrorBoundary fallback={<Error />}>
+            <Suspense fallback={<Spinner />}>
+              <SvelteChildAppComponent></SvelteChildAppComponent>
             </Suspense>
           </ErrorBoundary>
         </a>

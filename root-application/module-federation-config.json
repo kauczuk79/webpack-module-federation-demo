@@ -4,7 +4,8 @@
   "remotes": {
     "ReactChild": "ReactChild@http://localhost:3001/ReactChildModule.js",
     "AngularChild": "AngularChild@http://localhost:4200/AngularChildModule.js",
-    "VueChild": "VueChild@http://localhost:3003/VueChildModule.js"
+    "VueChild": "VueChild@http://localhost:3003/VueChildModule.js",
+    "SvelteChild": "SvelteChild@http://localhost:8080/SvelteChildModule.js"
   },
   "shared": {
     "react": { "singleton": true },
