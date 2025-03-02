@@ -9,7 +9,7 @@ const ReactChildAppComponent = lazy<typeof ReactChild>(async () => {
   return await import("ReactChild/App");
 });
 
-const VueChildAppComponent = lazy<typeof ReactChild>(async () => {
+const VueChildAppComponent = lazy(async () => {
   const { mount } = await import("VueChild/App");
 
   const Component = ({}) => {
@@ -36,7 +36,7 @@ const AngularChildAppComponent = lazy<() => React.JSX.Element>(async () => {
   return {
     default: () => (
       <>
-        <angular-mfe></angular-mfe>
+        <angular-mfe who="root"></angular-mfe>
       </>
     ),
   };
@@ -76,7 +76,7 @@ export default function App() {
         <a href="http://localhost:3001" target="_blank" className="tile">
           <ErrorBoundary fallback={<Error />}>
             <Suspense fallback={<Spinner />}>
-              <ReactChildAppComponent></ReactChildAppComponent>
+              <ReactChildAppComponent who="root"></ReactChildAppComponent>
             </Suspense>
           </ErrorBoundary>
         </a>

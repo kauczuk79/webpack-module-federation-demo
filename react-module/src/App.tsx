@@ -2,12 +2,11 @@ import React from "react";
 import ReactIcon from "./components/react-icon";
 import "./App.css";
 
-export default function App() {
+export default function App({ who = "world" }: { who: string }) {
   return (
     <div className="module-container">
       <ReactIcon />
-      <span>React 19</span>
-      <span>Module application</span>
+      <span>Hello {who}</span>
     </div>
   );
 }
