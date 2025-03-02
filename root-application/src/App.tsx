@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useRef, ErrorInfo } from "react";
+import React, { lazy, Suspense, useEffect, useRef } from "react";
 import ReactChild from "ReactChild/App";
 import "./App.css";
 import Spinner from "./components/spinner";

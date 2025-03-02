@@ -1,5 +1,7 @@
 const { defineConfig } = require("@vue/cli-service");
-const { ModuleFederationPlugin } = require("webpack").container;
+const {
+  ModuleFederationPlugin,
+} = require("@module-federation/enhanced/webpack");
 
 module.exports = defineConfig({
   transpileDependencies: true,
@@ -19,6 +21,9 @@ module.exports = defineConfig({
           vue: {
             eager: true,
           },
+        },
+        dts: {
+          generateTypes: true,
         },
       }),
     ],
