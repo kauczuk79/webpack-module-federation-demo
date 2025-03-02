@@ -1,7 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { ModuleFederationPlugin } = require("webpack").container;
-const { FederatedTypesPlugin } = require("@module-federation/typescript");
+const {
+  ModuleFederationPlugin,
+} = require("@module-federation/enhanced/webpack");
 const moduleFederationConfig = require("./module-federation-config.json");
 
 module.exports = {
@@ -9,6 +10,7 @@ module.exports = {
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
+    publicPath: "auto",
   },
   devServer: {
     static: path.join(__dirname, "dist"),
@@ -38,11 +40,5 @@ module.exports = {
       template: "./public/index.html",
     }),
     new ModuleFederationPlugin(moduleFederationConfig),
-    new FederatedTypesPlugin({
-      federationConfig: moduleFederationConfig,
-      typeFetchOptions: {
-        maxRetryAttempts: 1,
-      },
-    }),
   ],
 };
