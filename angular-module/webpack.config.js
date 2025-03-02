@@ -1,34 +1,36 @@
 const {
-  shareAll,
-  withModuleFederationPlugin,
-} = require("@angular-architects/module-federation/webpack");
+  ModuleFederationPlugin,
+} = require("@module-federation/enhanced/webpack");
+const deps = require("./package.json").dependencies;
 
-const webpackConfig = withModuleFederationPlugin({
-  name: "angular-module",
-  filename: "AngularChildModule.js",
-
-  library: {
-    type: "var",
-    name: "AngularChild",
-  },
-
-  exposes: {
-    "./Component": "./src/app/remote-entry.ts",
-  },
-
-  shared: {
-    ...shareAll({
-      singleton: true,
-      strictVersion: true,
-      requiredVersion: "auto",
-    }),
-  },
-});
-
-module.exports = {
-  ...webpackConfig,
+const config = {
   output: {
     publicPath: "auto",
     scriptType: "text/javascript",
   },
+  plugins: [
+    new ModuleFederationPlugin({
+      name: "angular-module",
+      filename: "AngularChildModule.js",
+
+      library: {
+        type: "var",
+        name: "AngularChild",
+      },
+
+      exposes: {
+        "./Component": "./src/app/remote-entry.ts",
+      },
+
+      shared: {
+        ...deps,
+      },
+
+      dts: {
+        generateTypes: true,
+      },
+    }),
+  ],
 };
+
+module.exports = config;
