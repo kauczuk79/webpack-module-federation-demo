@@ -4,6 +4,8 @@
   "dependencies": {
     "svelte": "4.2.19"
   },
+  "license": "ISC",
+  "author": "Robert Wesołowski <kauczuk79@gmail.com>",
   "devDependencies": {
     "@tsconfig/svelte": "5.0.4",
     "@types/node": "22.13.9",

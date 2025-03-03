@@ -8,8 +8,8 @@
     "start": "webpack serve",
     "build": "webpack --mode production"
   },
-  "author": "",
   "license": "ISC",
+  "author": "Robert Wesołowski <kauczuk79@gmail.com>",
   "dependencies": {
     "react": "19.0.0",
     "react-dom": "19.0.0"
