@@ -1,0 +1,13 @@
+{
+  "name": "SvelteChild",
+  "filename": "SvelteChildModule.js",
+  "exposes": {
+    "./App": "./src/App.svelte"
+  },
+  "shared": {
+    "svelte": {
+      "singleton": true,
+      "eager": true
+    }
+  }
+}

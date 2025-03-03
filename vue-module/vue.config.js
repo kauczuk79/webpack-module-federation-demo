@@ -2,6 +2,7 @@ const { defineConfig } = require("@vue/cli-service");
 const {
   ModuleFederationPlugin,
 } = require("@module-federation/enhanced/webpack");
+const moduleFederationConfig = require("./module-federation-config.json");
 
 module.exports = defineConfig({
   transpileDependencies: true,
@@ -10,22 +11,6 @@ module.exports = defineConfig({
     optimization: {
       splitChunks: false,
     },
-    plugins: [
-      new ModuleFederationPlugin({
-        name: "VueChild",
-        filename: "VueChildModule.js",
-        exposes: {
-          "./App": "./src/main.ts",
-        },
-        shared: {
-          vue: {
-            eager: true,
-          },
-        },
-        dts: {
-          generateTypes: true,
-        },
-      }),
-    ],
+    plugins: [new ModuleFederationPlugin(moduleFederationConfig)],
   },
 });

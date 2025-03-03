@@ -3,6 +3,7 @@ const path = require("path");
 const sveltePreprocess = require("svelte-preprocess");
 const { ModuleFederationPlugin } = require("webpack").container;
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const moduleFederationConfig = require("./module-federation-config.json");
 
 const mode = process.env.NODE_ENV || "development";
 const prod = mode === "production";
@@ -57,19 +58,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css",
     }),
-    new ModuleFederationPlugin({
-      name: "SvelteChild",
-      filename: "SvelteChildModule.js",
-      exposes: {
-        "./App": "./src/App.svelte",
-      },
-      shared: {
-        svelte: {
-          singleton: true,
-          eager: true,
-        },
-      },
-    }),
+    new ModuleFederationPlugin(moduleFederationConfig),
     new CopyWebpackPlugin({
       patterns: [
         {

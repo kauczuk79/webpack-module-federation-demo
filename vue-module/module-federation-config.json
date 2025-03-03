@@ -1,0 +1,15 @@
+{
+  "name": "VueChild",
+  "filename": "VueChildModule.js",
+  "exposes": {
+    "./App": "./src/main.ts"
+  },
+  "shared": {
+    "vue": {
+      "eager": true
+    }
+  },
+  "dts": {
+    "generateTypes": true
+  }
+}

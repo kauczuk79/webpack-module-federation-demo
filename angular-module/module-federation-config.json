@@ -1,0 +1,17 @@
+{
+  "name": "angular-module",
+  "filename": "AngularChildModule.js",
+
+  "library": {
+    "type": "var",
+    "name": "AngularChild"
+  },
+
+  "exposes": {
+    "./Component": "./src/app/remote-entry.ts"
+  },
+
+  "dts": {
+    "generateTypes": true
+  }
+}
