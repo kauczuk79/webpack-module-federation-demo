@@ -22,10 +22,6 @@ const config = {
         "./Component": "./src/app/remote-entry.ts",
       },
 
-      shared: {
-        ...deps,
-      },
-
       dts: {
         generateTypes: true,
       },
