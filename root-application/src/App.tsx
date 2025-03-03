@@ -44,8 +44,6 @@ const AngularChildAppComponent = lazy<() => React.JSX.Element>(async () => {
 
 const SvelteChildAppComponent = lazy(async () => {
   const module = await import("SvelteChild/App");
-  console.log(module);
-
   const Component = () => {
     const elementRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
