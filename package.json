@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently --kill-others \"npm start --prefix ./root-application\" \"npm start --prefix ./react-module\" \"npm start --prefix ./angular-module\" \"npm start --prefix ./vue-module\" \"npm start --prefix ./svelte-module\""
+    "start": "concurrently --kill-others \"npm start --prefix ./root-application\" \"npm start --prefix ./react-module\" \"npm start --prefix ./angular-module\" \"npm start --prefix ./vue-module\" \"npm start --prefix ./svelte-module\""
   },
   "license": "ISC",
   "author": "Robert Wesołowski <kauczuk79@gmail.com>",
