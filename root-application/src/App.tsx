@@ -73,34 +73,34 @@ export default function App() {
       <div className="header">Root application [React 19]</div>
       <Counter></Counter>
       <div className="tile-container">
-        <a href="http://localhost:3001" target="_blank" className="tile">
+        <div className="tile">
           <ErrorBoundary fallback={<Error />}>
             <Suspense fallback={<Spinner />}>
               <ReactChildAppComponent who="root"></ReactChildAppComponent>
             </Suspense>
           </ErrorBoundary>
-        </a>
-        <a href="http://localhost:3002" target="_blank" className="tile">
+        </div>
+        <div className="tile">
           <ErrorBoundary fallback={<Error />}>
             <Suspense fallback={<Spinner />}>
               <AngularChildAppComponent />
             </Suspense>
           </ErrorBoundary>
-        </a>
-        <a href="http://localhost:3003" target="_blank" className="tile">
+        </div>
+        <div className="tile">
           <ErrorBoundary fallback={<Error />}>
             <Suspense fallback={<Spinner />}>
               <VueChildAppComponent></VueChildAppComponent>
             </Suspense>
           </ErrorBoundary>
-        </a>
-        <a href="http://localhost:3004" target="_blank" className="tile">
+        </div>
+        <div className="tile">
           <ErrorBoundary fallback={<Error />}>
             <Suspense fallback={<Spinner />}>
               <SvelteChildAppComponent></SvelteChildAppComponent>
             </Suspense>
           </ErrorBoundary>
-        </a>
+        </div>
       </div>
     </div>
   );
