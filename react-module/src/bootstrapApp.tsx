@@ -6,7 +6,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 const root = ReactDom.createRoot(document.getElementById("root")!);
 export const federatedSlices = {
-  counter: await import("RootApplication/CounterSlice").then((module) => {
+  counter: import("RootApplication/CounterSlice").then((module) => {
     return module.default.reducer;
   }),
 };

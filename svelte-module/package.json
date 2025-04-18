@@ -8,20 +8,20 @@
   "author": "Robert Wesołowski <kauczuk79@gmail.com>",
   "devDependencies": {
     "@tsconfig/svelte": "5.0.4",
-    "@types/node": "22.13.9",
+    "@types/node": "22.14.1",
     "copy-webpack-plugin": "13.0.0",
     "cross-env": "7.0.3",
     "css-loader": "7.1.2",
     "mini-css-extract-plugin": "2.9.2",
-    "svelte-check": "4.1.4",
+    "svelte-check": "4.1.6",
     "svelte-loader": "3.2.4",
     "svelte-preprocess": "6.0.3",
     "ts-loader": "9.5.2",
     "tslib": "2.8.1",
-    "typescript": "5.8.2",
-    "webpack": "5.98.0",
+    "typescript": "5.8.3",
+    "webpack": "5.99.6",
     "webpack-cli": "6.0.1",
-    "webpack-dev-server": "5.2.0"
+    "webpack-dev-server": "5.2.1"
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
