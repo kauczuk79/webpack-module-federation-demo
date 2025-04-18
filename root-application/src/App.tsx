@@ -4,6 +4,7 @@ import "./App.css";
 import Spinner from "./components/spinner";
 import { Error } from "./components/error";
 import ErrorBoundary from "./components/error-boundary";
+import { Counter } from "./components/counter";
 
 const ReactChildAppComponent = lazy<typeof ReactChild>(async () => {
   return await import("ReactChild/App");
@@ -70,6 +71,7 @@ export default function App() {
   return (
     <div>
       <div className="header">Root application [React 19]</div>
+      <Counter></Counter>
       <div className="tile-container">
         <a href="http://localhost:3001" target="_blank" className="tile">
           <ErrorBoundary fallback={<Error />}>

@@ -7,8 +7,14 @@
     "VueChild": "VueChild@http://localhost:3003/VueChildModule.js",
     "SvelteChild": "SvelteChild@http://localhost:3004/SvelteChildModule.js"
   },
+  "exposes": {
+    "./CounterSlice": "./src/store/counterReducer"
+  },
   "shared": {
     "react": { "singleton": true },
-    "react-dom": { "singleton": true }
+    "react-dom": { "singleton": true },
+    "@reduxjs/toolkit": { "singleton": true },
+    "react-redux": { "singleton": true },
+    "redux": { "singleton": true }
   }
 }
